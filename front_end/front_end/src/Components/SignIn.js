@@ -1,21 +1,50 @@
 import './App.css';
-import React, { Component } from 'react';
-import { auth, googleAuthProvider } from '../../firebase.js';
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import axios from 'axios';
+import React, { Component, useState } from 'react';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import './Signin.scss';
 import { Redirect } from 'react-router-dom'
 import { Message } from 'semantic-ui-react'
 
-class Signin extends Component{
-    state = {
-        isSignedIn: false,
-        willRedirect: false
-    };
-    handleSuccessfulSignIn = () => {
-		this.setState({willRedirect: true});
-	}
+
+export default function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  function validateForm() {
+    return email.length > 0 && password.length > 0; //just makes sure its not empty rn but we change this later
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  return (
+    <div className="Login">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
+          Sign in
+        </Button>
+      </Form>
+    </div>
+  );
 }
 
 
-export default Signin;
