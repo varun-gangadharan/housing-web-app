@@ -1,0 +1,53 @@
+Defines interaction for our API.
+
+Every response has a JSON body with message and data fields.
+Message describes the result of the action and data provides the content of
+the request or is empty if not applicable.
+
+The database consists of users and listings, who are defined in 'back_end/models'.
+
+For the User schema, we can do the following requests: GET, POST, GET/:id, PUT/:id, DELETE/:id
+
+Requests:
+    This same logic applies to the listing schema except the use of 'listings' in place of 'users' in the URL
+
+    GET <address>/users
+        Returns a list of all the users.
+        Can use query params to narrow down result: skip, limit, where, sort (more on these below)
+
+    POST <address>/users
+        Create an instance of the object in the database. The body should be a JSON object representing the schema
+
+    GET <address>/users/id
+        Return the object with the specified id
+
+    PUT <address>/users/id
+        Update an instance of the object in the database. The body should be a JSON object representing the schema
+
+    DELETE <address>/users/id
+        Delete the instance of the object in the database.
+
+Query parameters:
+    These query parameters can be used in conjunction.
+
+    skip
+        Exclude the first x amount of entries in the return list
+        Ex.
+            <address>/users?skip=3
+
+    limit
+        Return only x amount of entries in the return list
+        Ex.
+            <address>/users?limit=10
+
+    where
+        Provide a JSON query object to filter the results further
+        Ex.
+            <address>/users?where={"email": "yourmom@gmail.com"}
+            
+            <address>/users?where={"firstName": "Geoffrey", "lastName": "Challen"}
+            
+    sort
+        Sort the returned list based on the field provided where 1 is ascending and -1 is descending
+        Ex.
+            <address>/users?sort={"firstName": 1}
