@@ -1,0 +1,30 @@
+img {
+    height: 300px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.listing {
+    position: relative;
+    margin-left: 65px;
+}
+
+.listing_info {
+    display: inline-block;
+    position: absolute;
+    padding-top: 75px;
+    bottom: 1%;
+    width: 400px;
+    background-color: #FFF;
+    height: 225px;
+    border-radius: 0px 5px 5px 0px;
+}
+
+ul {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.more_link {
+    color: blue;
+    text-decoration: underline;
+}

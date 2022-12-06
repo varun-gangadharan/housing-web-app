@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./HomePage.css"
 import "../App.css"
+import Listing from "./Listing";
 
 export default function HomePage() {
 
@@ -8,15 +9,17 @@ export default function HomePage() {
         <div>
             <div class="nav_bar">
                 <h2>VAMM Housing</h2>
-                <a>Home</a>
+                <a>Sign In</a>
                 <a>About</a>
             </div>
             <div class="main_content">
+                <input type="text" placeholder="Search"></input>
+                <button>Go</button>
                 <ul>
-                    <li>Listing 1</li>
-                    <li>Listing 2</li>
-                    <li>Listing 3</li>
-                    <li>Listing 4</li>
+                    <li><Listing></Listing></li>
+                    <li><Listing></Listing></li>
+                    <li><Listing></Listing></li>
+                    <li><Listing></Listing></li>
                 </ul>
             </div>
         </div>

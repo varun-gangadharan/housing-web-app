@@ -1,12 +1,56 @@
 .nav_bar a {
     float: right;
-    color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 33px 25px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 23px;
+    background-color: #D3FCD5;
+    height: 34px;
+    font-weight: 200;
 }
 
-.nav_bar h1 {
+.nav_bar a:hover {
+    background-color: #e3e3e3;
+    font-weight: 400;
+}
+
+.nav_bar h2 {
     display: inline;
+    position: absolute;
+    top: 15%;
+    left: 1%;
+}
+
+.nav_bar {
+    background-color: #e3e3e3;
+    height: 100px;
+    position: relative;
+    border-bottom: 3px solid #e3e3e3;
+}
+
+.main_content {
+    width: 60%;
+    margin: 30px auto;
+    background-color: #D3FCD5;
+    border: 3px solid #e3e3e3;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+input {
+    display: inline;
+    margin-left: 20px;
+    border-radius: 6px 0px 0px 6px;
+}
+
+button {
+    border-radius: 0px 6px 6px 0px;
+}
+
+input:focus{
+    outline: none;
+}
+
+ul {
+    list-style: none
 }
