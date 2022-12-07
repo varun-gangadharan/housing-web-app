@@ -4,6 +4,12 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import './Signin.css';
 import { Redirect } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
 export default function Signin() {
   const [email, setEmail] = useState("");
@@ -18,11 +24,12 @@ export default function Signin() {
   }
 
   return (
-    <div className="Login">
+    <div className="login">
+      <h2>Sign In</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
           <Form.Control
+            placeholder="Email"
             autoFocus
             type="email"
             value={email}
@@ -30,8 +37,8 @@ export default function Signin() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
           <Form.Control
+            placeholder="Password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -41,6 +48,7 @@ export default function Signin() {
           Sign in
         </Button>
       </Form>
+      <Link to="sign-up">Don't have an account?</Link>
     </div>
   );
 }

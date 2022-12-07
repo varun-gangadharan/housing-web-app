@@ -16,8 +16,7 @@ export default function HomePage() {
         <div>
             <div className="nav_bar">
                 <h2>VAMM</h2>
-                <Link to="sign-in"><a>Sign In</a></Link>
-                <a>About</a>
+                <Link to="sign-in">Sign In</Link>
             </div>
             <div className="main_content">
                 <input type="text" placeholder="Search"></input>
