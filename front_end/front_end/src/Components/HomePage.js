@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import "./HomePage.css"
 import "../App.css"
 import Listing from "./Listing";
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Route,
+    Link,
+  } from "react-router-dom";
+  
 
 export default function HomePage() {
 
     return(
         <div>
-            <div class="nav_bar">
-                <h2>VAMM Housing</h2>
-                <a>Sign In</a>
+            <div className="nav_bar">
+                <h2>VAMM</h2>
+                <Link to="sign-in"><a>Sign In</a></Link>
                 <a>About</a>
             </div>
-            <div class="main_content">
+            <div className="main_content">
                 <input type="text" placeholder="Search"></input>
                 <button>Go</button>
                 <ul>

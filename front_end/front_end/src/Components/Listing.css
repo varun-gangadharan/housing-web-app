@@ -28,3 +28,7 @@ ul {
     color: blue;
     text-decoration: underline;
 }
+
+.more_link:hover {
+    font-weight: 500;
+}
