@@ -64,7 +64,17 @@ module.exports = function (router) {
     usersIDRoute.get(async (req, res) => {
         const userId = req.params.id
 
-        
+        const user = await User.findById(userId)
+
+        try {
+            if (user === null) {
+                return res.status(404).json({ message: 'User not found', data: '' })
+            } else {
+                return res.status(200).json({ message: 'Retrieved user', data: user })
+            }
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // PUT /users/:id
@@ -75,5 +85,19 @@ module.exports = function (router) {
     // DELETE /users/:id
     usersIDRoute.delete(async (req, res) => {
         const userId = req.params.id
+
+        try {
+            const user = await User.findById(userId)
+            if (user === null) {
+                return res.status(404).json({ message: 'User not found', data: '' })
+            }
+
+            await User.deleteOne({ _id: userId })
+            
+            return res.status(200).json({ message: 'User successfully deleted', data: '' })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
+
     })
 }
