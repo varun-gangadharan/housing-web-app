@@ -52,7 +52,7 @@ import {
           <p className="details-page__price">Price: {listing.price}</p>
   
           {/* back button */}
-          <button onClick={this.handleBackClick} className="details-page__back-button">Back</button>
+          <button onClick={this.handleBackClick} className="details-page__back-button">Back to results</button>
         </div>
       );
     }
