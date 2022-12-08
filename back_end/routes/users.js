@@ -6,9 +6,9 @@ module.exports = function (router) {
 
     // GET /users
     usersRoute.get(async (req, res) => {
+        const query = req.query.where === undefined ? undefined : JSON.parse(req.query.where)
         const skip = req.query.skip === undefined ? 0 : parseInt(req.query.skip)
         const limit = req.query.limit === undefined ? null : parseInt(req.query.limit)
-        const query = req.query.where === undefined ? undefined : JSON.parse(req.query.where)
         const sort = req.query.sort === undefined ? undefined : JSON.parse(req.query.sort)
 
         try {
@@ -63,6 +63,8 @@ module.exports = function (router) {
     // GET /users/:id
     usersIDRoute.get(async (req, res) => {
         const userId = req.params.id
+
+        
     })
 
     // PUT /users/:id
