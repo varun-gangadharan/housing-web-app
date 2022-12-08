@@ -1,5 +1,11 @@
 import "../App.css"
 import "./Listing.css"
+import {
+    createBrowserRouter,
+    RouterProvider,
+    Route,
+    Link,
+  } from "react-router-dom";
 
 export default function Listing(){
     return (
@@ -12,7 +18,7 @@ export default function Listing(){
                 <ul>2 bath</ul>
                 <ul>10000 sqft.</ul>
                 <ul>House</ul>
-                <ul><a className="more_link">See more..</a></ul>
+                <ul><a className="more_link"><Link to="details">See more..</Link></a></ul>
             </div>
         </div>
     );
