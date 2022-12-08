@@ -48,7 +48,7 @@ export default function Signin() {
           Sign in
         </Button>
       </Form>
-      <Link to="sign-up">Don't have an account?</Link>
+      <Link to="../sign-up">Don't have an account?</Link>
     </div>
   );
 }

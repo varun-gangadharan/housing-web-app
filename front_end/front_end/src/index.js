@@ -12,11 +12,15 @@ import {
 } from "react-router-dom";
 import SignUp from './Components/SignUp';
 import Signin from './Components/SignIn';
+import Details from './Components/Details';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <HomePage></HomePage>,
+    children: [
+      
+    ]
   },
   {
     path: "sign-in",
@@ -26,6 +30,10 @@ const router = createBrowserRouter([
     path: "sign-up",
     element: <SignUp></SignUp>,
   },
+  {
+    path: "details",
+    element: <Details></Details>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
