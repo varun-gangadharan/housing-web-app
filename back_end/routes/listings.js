@@ -6,17 +6,92 @@ module.exports = function (router) {
 
     // GET /listings
     listingsRoute.get(async (req, res) => {
-        // ...
+        const query = req.query.where === undefined ? undefined : JSON.parse(req.query.where)
+        const skip = req.query.skip === undefined ? 0 : parseInt(req.query.skip)
+        const limit = req.query.limit === undefined ? null : parseInt(req.query.limit)
+        const sort = req.query.sort === undefined ? undefined : JSON.parse(req.query.sort)
+
+        try {
+            const listings = await Listing.find(query).sort(sort).skip(skip).limit(limit)
+            return res.status(200).json({ message: 'Retrieved list of listings', data: listings })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // POST /listings
     listingsRoute.post(async (req, res) => {
-        // ...
+        if (req.body.price === undefined) {
+            return res.status(400).json({ message: 'Price (number) missing', data: '' })
+        }
+        if (req.body.location === undefined) {
+            return res.status(400).json({ message: 'Location (string) missing', data: '' })
+        }
+        if (req.body.bedrooms === undefined) {
+            return res.status(400).json({ message: 'Number of bedrooms (number) missing', data: '' })
+        }
+        if (req.body.bathrooms === undefined) {
+            return res.status(400).json({ message: 'Number of bathrooms (number) missing', data: '' })
+        }
+        if (req.body.utilities === undefined) {
+            return res.status(400).json({ message: 'Utilities (enumeration list) missing', data: '' })
+        }
+        if (req.body.squareFootage === undefined) {
+            return res.status(400).json({ message: 'Square footage (number) missing', data: '' })
+        }
+        if (req.body.company === undefined) {
+            return res.status(400).json({ message: 'Company (enumeration) missing', data: '' })
+        }
+        if (req.body.housingType === undefined) {
+            return res.status(400).json({ message: 'Housing Type (enumeration) missing', data: '' })
+        }
+        if (req.body.vacancy === undefined) {
+            return res.status(400).json({ message: 'Vacancy (boolean) missing', data: '' })
+        }
+
+        const listing = new Listing({
+            price: req.body.price,
+            location: req.body.location,
+            bedrooms: req.body.bedrooms,
+            bathrooms: req.body.bathrooms,
+            utilities: req.body.utilities,
+            amenities: req.body.amenities,
+            squareFootage: req.body.squareFootage,
+            company: req.body.company,
+            policies: req.body.policies,
+            housingType: req.body.housingType,
+            vacancy: req.body.vacancy,
+            picture: req.body.picture
+        })
+        
+        try {
+            const exists = await Listing.exists({ location: listing.location })
+            if (exists) {
+                return res.status(400).json({ message: 'Listing with address ' + listing.location + ' already exists', data: '' })
+            }
+
+            const newListing = await listing.save()
+            return res.status(201).json({ message: 'Listing successfully created', data: newListing })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // GET /listings/:id
     listingsIDRoute.get(async (req, res) => {
-        // ...
+        const listingId = req.params.id
+
+        const listing = await Listing.findById(listingId)
+
+        try {
+            if (listing === null) {
+                return res.status(404).json({ message: 'Listing not found', data: '' })
+            } else {
+                return res.status(200).json({ message: 'Retrieved listing', data: listing })
+            }
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // PUT /listings/:id
@@ -26,6 +101,19 @@ module.exports = function (router) {
 
     // DELETE /listings/:id
     listingsIDRoute.delete(async (req, res) => {
-        // ...
+        const listingId = req.params.id
+
+        try {
+            const listing = await Listing.findById(listingId)
+            if (listing === null) {
+                return res.status(404).json({ message: 'Listing not found', data: '' })
+            }
+
+            await Listing.deleteOne({ _id: listingId })
+            
+            return res.status(200).json({ message: 'Listing successfully deleted', data: '' })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 }
