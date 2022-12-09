@@ -9,7 +9,7 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
 
     return(
-        <div>
+        <div className="signup">
             <h1>VAMM Housing</h1>
             <h2>Sign up for an account now!</h2>
             <div>

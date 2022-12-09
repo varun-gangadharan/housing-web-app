@@ -18,7 +18,7 @@ export default function Listing(){
                 <ul>2 bath</ul>
                 <ul>10000 sqft.</ul>
                 <ul>House</ul>
-                <ul><a className="more_link"><Link to="details">See more..</Link></a></ul>
+                <ul><a className="more_link"><Link to="details/1">See more..</Link></a></ul>
             </div>
         </div>
     );
