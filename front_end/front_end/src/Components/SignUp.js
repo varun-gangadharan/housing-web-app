@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./SignUp.css"
 import "../App.css"
+import { signup } from "../api";
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState("");
     const [secondName, setSecondName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [status, setStatus] = useState("");
 
     return(
         <div className="signup">
@@ -17,7 +19,8 @@ export default function SignUp() {
                 <input type="text" value={secondName} onChange={(e) => setSecondName(e.target.value)} placeholder="Second name"></input>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
                 <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
-                <button>Sign Up!</button>
+                <button onClick={() => signup(firstName,secondName,email,password).then((v) => setStatus(v.statusText))}>Sign Up!</button>
+                <p>{status}</p>
             </div>
         </div>
     );
