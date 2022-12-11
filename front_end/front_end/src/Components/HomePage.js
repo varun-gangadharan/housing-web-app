@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./HomePage.css"
 import "../App.css"
 import Listing from "./Listing";
@@ -8,9 +8,18 @@ import {
     Route,
     Link,
   } from "react-router-dom";
-  
+
+import { getListings, signup } from "../api";
 
 export default function HomePage() {
+
+    const [listings, setListings] = useState([]);
+
+    useEffect(() => {
+        getListings().then((e) => {
+            setListings(e);
+        });
+    });
 
     return(
         <div>
@@ -22,11 +31,14 @@ export default function HomePage() {
                 <input type="text" placeholder="Search"></input>
                 <button>Go</button>
                 <ul>
-                    <li><Listing></Listing></li>
-                    <li><Listing></Listing></li>
-                    <li><Listing></Listing></li>
-                    <li><Listing></Listing></li>
-                </ul>
+                    {listings.map((listing, i) => 
+                    <Listing price={listing.price}
+                             location={listing.location}
+                             bedrooms={listing.bedrooms}
+                             bathrooms={listing.bathrooms}
+                             squareFootage={listing.squareFootage}
+                             company={listing.company}
+                             picture={listing.picture}></Listing>)}                </ul>
             </div>
         </div>
     );

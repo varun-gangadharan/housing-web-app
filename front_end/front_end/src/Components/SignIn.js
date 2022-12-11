@@ -10,46 +10,25 @@ import {
   Route,
   Link,
 } from "react-router-dom";
+import { login } from '../api';
 
-export default function Signin() {
+export default function SignIn() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [status, setStatus] = useState("");
 
-  function validateForm() {
-    return email.length > 0 && password.length > 0; //just makes sure its not empty rn but we change this later
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  return (
-    <div className="login">
-      <h2>Sign In</h2>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Control
-            placeholder="Email"
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Control
-            placeholder="Password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
-          Sign in
-        </Button>
-      </Form>
-      <Link to="../sign-up">Don't have an account?</Link>
-    </div>
+  return(
+      <div className="login">
+          <h1>VAMM Housing</h1>
+          <h2>Sign in now!</h2>
+          <div>
+              <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
+              <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
+              <button onClick={() => login(email,password).then((v) => setStatus((v.body == {}) ? "Login unsuccessful" : "Logged in successfully"))}>Sign In!</button>
+              <p>{status}</p>
+          </div>
+      </div>
   );
 }
 
