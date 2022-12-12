@@ -10,6 +10,6 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "start": "nodemon --exec back_end/server.js"
+    "start": "nodemon --exec node back_end/server.js"
   }
 }
