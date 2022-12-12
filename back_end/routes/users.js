@@ -80,6 +80,26 @@ module.exports = function (router) {
     // PUT /users/:id
     usersIDRoute.put(async (req, res) => {
         const userId = req.params.id
+
+        try {
+            const user = await User.findById(userId)
+            if (user === null) {
+                return res.status(404).json({ message: 'User not found', data: '' })
+            }
+            
+            if (req.body.email != undefined)            user.email = req.body.email
+            if (req.body.firstName != undefined)        user.firstName = req.body.firstName
+            if (req.body.lastName != undefined)         user.lastName = req.body.lastName
+            if (req.body.password != undefined)         user.password = req.body.password
+            if (req.body.favorites != undefined)        user.favorites = req.body.favorites
+            if (req.body.phoneNumber != undefined)      user.phoneNumber = req.body.phoneNumber
+
+            await user.save()
+
+            return res.status(200).json({ message: 'The user was updated', data: user })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // DELETE /users/:id

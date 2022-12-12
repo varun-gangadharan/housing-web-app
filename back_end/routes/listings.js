@@ -96,7 +96,33 @@ module.exports = function (router) {
 
     // PUT /listings/:id
     listingsIDRoute.put(async (req, res) => {
-        // ...
+        const listingId = req.params.id
+
+        try {
+            const listing = await Listing.findById(listingId)
+            if (listing === null) {
+                return res.status(404).json({ message: 'Listing not found', data: '' })
+            }
+            
+            if (req.body.price != undefined)            listing.price = req.body.price
+            if (req.body.location != undefined)         listing.location = req.body.location
+            if (req.body.bedrooms != undefined)         listing.bedrooms = req.body.bedrooms
+            if (req.body.bathrooms != undefined)        listing.bathrooms = req.body.bathrooms
+            if (req.body.utilities != undefined)        listing.utilities = req.body.utilities
+            if (req.body.amenities != undefined)        listing.amenities = req.body.amenities
+            if (req.body.squareFootage != undefined)    listing.squareFootage = req.body.squareFootage
+            if (req.body.company != undefined)          listing.company = req.body.company
+            if (req.body.policies != undefined)         listing.policies = req.body.policies
+            if (req.body.housingType != undefined)      listing.housingType = req.body.housingType
+            if (req.body.vacancy != undefined)          listing.vacancy = req.body.vacancy
+            if (req.body.picture != undefined)          listing.picture = req.body.picture
+
+            await listing.save()
+
+            return res.status(200).json({ message: 'The listing was updated', data: listing })
+        } catch (err) {
+            return res.status(500).json({ message: 'Server error', data: '' })
+        }
     })
 
     // DELETE /listings/:id
