@@ -15,10 +15,7 @@ export default function HomePage() {
 
     const [listings, setListings] = useState([]);
 
-    useEffect(() => {
-        getListings()
-        .then((response) => response.json().then((data) => setListings(data.data)))
-    });
+    getListings().then((response) => response.json().then((data) => setListings(data.data)))
 
     return(
         <div>
