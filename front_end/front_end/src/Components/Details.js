@@ -16,7 +16,7 @@ import { getListings} from "../api";
       <div>
           <div className="nav_bar">
               <h2>VAMM</h2>
-              <Link to="sign-in">Sign In</Link>
+              <Link to="/">Home</Link>
           </div>  
           <div>
             <h1>Apartment for Rent</h1>

@@ -21,6 +21,10 @@ export default function SignIn() {
   return(
       <div className="login">
           <h1>VAMM Housing</h1>
+          <div className="nav_bar">
+                <Link to="home-page">Home</Link>
+                <Link to="sign-up">Sign Up</Link>
+            </div>
           <h2>Sign in now!</h2>
           <div>
               <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
