@@ -39,7 +39,7 @@ def getTasks(conn):
     d = json.loads(data)
 
     # Array of user IDs
-    tasks = [str(d['data'][x]['_id']) for x in range(len(d['data']))]
+    tasks = [str(d['data'][x]['location']) for x in range(len(d['data']))]
 
     return tasks
 
