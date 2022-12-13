@@ -18,7 +18,7 @@ export default function SignUp() {
                 <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First name"></input>
                 <input type="text" value={secondName} onChange={(e) => setSecondName(e.target.value)} placeholder="Second name"></input>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
-                <input type="text" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
                 <button onClick={() => signup(firstName,secondName,email,password).then((v) => setStatus(v.statusText))}>Sign Up!</button>
                 <p>{status}</p>
             </div>
