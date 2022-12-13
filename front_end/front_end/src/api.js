@@ -5,6 +5,9 @@ export async function getListing(id){
 }
 
 export async function getListings(){
+    return fetch('http://localhost:8888/api/listings', {
+		method: 'GET',
+		});
 	return [
 		{
 			price: 2000,
@@ -34,9 +37,6 @@ export async function getListings(){
 			picture: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/brewster-mcleod-architects-1486154143.jpg"
 		},
 	];
-    return fetch('url/api/users/', {
-		method: 'GET'
-	});
 }
 
 export async function login(email,password){
