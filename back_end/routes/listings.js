@@ -142,4 +142,6 @@ module.exports = function (router) {
             return res.status(500).json({ message: 'Server error', data: '' })
         }
     })
+
+    return router
 }

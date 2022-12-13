@@ -1,7 +1,8 @@
 var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
-    secrets = require('../config/secrets')
+    secrets = require('../config/secrets'),
+    bodyParser = require('body-parser')
 
 var app = express()
 
