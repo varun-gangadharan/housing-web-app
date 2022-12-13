@@ -26,6 +26,7 @@ export default function HomePage() {
             <div className="nav_bar">
                 <h2>VAMM</h2>
                 <Link to="sign-in">Sign In</Link>
+                <Link to="sign-up">Sign Up</Link>
             </div>
             <div className="main_content">
                 <input type="text" placeholder="Search"></input>
