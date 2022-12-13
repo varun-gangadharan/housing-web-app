@@ -18,7 +18,7 @@ export default function Listing(props){
                 <ul>{props.bathrooms} bath</ul>
                 <ul>{props.squareFootage} sqft.</ul>
                 <ul>{props.company}</ul>
-                <ul><a className="more_link"><Link to="details/1">See more..</Link></a></ul>
+                <ul><a className="more_link"><Link to= "details/1">See more..</Link></a></ul>
             </div>
         </div>
     );
