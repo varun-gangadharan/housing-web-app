@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import "./SignUp.css"
 import "../App.css"
 import { signup } from "../api";
+import { Redirect } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 
 export default function SignUp() {
     const [firstName, setFirstName] = useState("");
@@ -11,6 +18,11 @@ export default function SignUp() {
     const [status, setStatus] = useState("");
 
     return(
+        <div>
+        <div className="nav_bar">
+            <Link to="../">Home</Link>
+            <Link to="../sign-in">Sign In</Link>
+        </div>
         <div className="signup">
             <h1>VAMM Housing</h1>
             <h2>Sign up for an account now!</h2>
@@ -22,6 +34,7 @@ export default function SignUp() {
                 <button onClick={() => signup(firstName,secondName,email,password).then((v) => setStatus(v.statusText))}>Sign Up!</button>
                 <p>{status}</p>
             </div>
+        </div>
         </div>
     );
 }
