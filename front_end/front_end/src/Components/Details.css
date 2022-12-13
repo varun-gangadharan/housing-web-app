@@ -1,17 +1,29 @@
-.details-page {
-  }
-  
-  .details-page__image {
-  }
-  
-  .details-page__title {
-  }
-  
-  .details-page__description {
-  }
-  
-  .details-page__price {
-  }
-  
-  .details-page__back-button {
-  }
+.nav_bar a {
+  float: right;
+  text-align: center;
+  padding: 33px 25px;
+  text-decoration: none;
+  font-size: 23px;
+  background-color: #D3FCD5;
+  height: 34px;
+  font-weight: 200;
+}
+
+.nav_bar a:hover {
+  background-color: #e3e3e3;
+  font-weight: 400;
+}
+
+.nav_bar h2 {
+  display: inline;
+  position: absolute;
+  top: 15%;
+  left: 1%;
+}
+
+.nav_bar {
+  background-color: #e3e3e3;
+  height: 100px;
+  position: relative;
+  border-bottom: 3px solid #e3e3e3;
+}
