@@ -6,5 +6,5 @@ To run this framework, simply clone the repository locally and then open a separ
 
 Now, to run the frontend and get the website going, navigate to the frontend folder in this repository back in the code editor where you have cloned the repository. Here, you can run the command npm start once you have navigated to said folder.
 
-##NOTE
+## NOTE
 If either of these npm starts give you an error, you may need to install node.js or run npm install first
